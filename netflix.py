@@ -35,7 +35,7 @@ df = df.dropna(subset=['date_added'])
 df['date_added'] = df['date_added'].str.strip()
 df['date_added'] = pd.to_datetime(df['date_added'], errors='coerce')
 
-df['duration_unit'] = df['duration'].str.extract(r'([0-9]+)')
+df['duration_unit'] = df['duration'].str.extract(r'([a-zA-Z]+)')
 
 kolom_teks = ['title', 'listed_in', 'type', 'rating']
 for col in kolom_teks:
@@ -48,5 +48,5 @@ print("\n === Dataset after cleansing ===")
 print(df.info())
 
 print("=== Data diurutkan dari rating anak-anak ke dewasa ===")
-print(df[['show_id', 'title', 'rating', 'type']].head(20))
+print(df[['title', 'rating', 'type']].head(20))
 
